@@ -1,11 +1,15 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const morgan = require('morgan');
+const morgan = require("morgan");
 const { PORT = 3000 } = process.env;
 
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 
-app.use(express.static('public'));
+app.use(express.static("public"));
+
+app.get("/ping", (req, res) => {
+  res.send("pong");
+});
 
 app.listen(PORT, () => {
   console.log(`Server is listening at http://localhost:${PORT}`);
